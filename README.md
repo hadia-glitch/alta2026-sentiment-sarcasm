@@ -52,8 +52,8 @@ Raw data files are included here for reproducibility. If the shared task's terms
 ```
 .
 ├── data/                 # train.csv, valid.csv, evaluate.py, sample_answer_template.csv
-├── notebooks/
-│   └── sentiment_sarcasm_pipeline.ipynb
+├── notebook/
+│   └── sentiment_sarcasm_pipeline_refined.ipynb
 ├── submissions/          # dev_classical_baseline.zip, dev_multi_encoder_ensemble.zip
 ├── requirements.txt
 └── README.md
