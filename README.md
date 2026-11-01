@@ -1,6 +1,6 @@
 # Sentiment & Sarcasm Classification Across English Varieties
 
-Multi-task classification of sentiment and sarcasm in Australian and British English text, built for the [ALTA 2026 Shared Task](http://www.alta.asn.au/events/sharedtask2026/). The task pairs two signals that are notoriously entangled — sarcasm frequently inverts surface sentiment — and scores systems on their *weakest* language variety per task, rather than their average, which makes naive fine-tuning a poor fit and cross-group robustness a first-class design constraint rather than an afterthought.
+Multi-task classification of sentiment and sarcasm in Australian and British English text, built for the ALTA 2026 Shared Task. The task pairs two signals that are notoriously entangled — sarcasm frequently inverts surface sentiment — and scores systems on their *weakest* language variety per task, rather than their average, which makes naive fine-tuning a poor fit and cross-group robustness a first-class design constraint rather than an afterthought.
 
 ## Results
 
@@ -66,11 +66,11 @@ pip install -r requirements.txt
 jupyter notebook notebooks/sentiment_sarcasm_pipeline.ipynb
 ```
 
-The classical baseline runs on CPU with no external dependencies beyond the packages above. The transformer pipeline requires a CUDA GPU and Hugging Face Hub access; it was developed and validated on a free-tier Colab GPU. The LLM-based augmentation step calls a hosted inference API and requires an API key set as an environment variable — everything else runs offline.
+The classical baseline runs on CPU with no external dependencies beyond the packages above. The transformer pipeline requires a CUDA GPU and Hugging Face Hub access; it was developed and validated on a free-tier Colab GPU. The LLM-based augmentation step calls a hosted inference API and requires an API key set as an environment variable, everything else runs offline.
 
 ## Limitations & future directions
 
-- Sarcasm on the lower-resource dialect remains the binding constraint on overall score; the gap to the strongest reported leaderboard results is concentrated almost entirely there.
+- Sarcasm on the lower-resource dialect remains the binding constraint on overall score.
 - The current architecture shares a single encoder across both tasks with no auxiliary signal beyond the two primary loss terms. An earlier iteration explored a lightweight auxiliary head trained against a cheap heuristic proxy for sentiment/sarcasm inconsistency; it was dropped for this submission to keep memory usage within a single consumer GPU's budget, and is a candidate for revisiting given more compute.
 - The per-dialect calibration currently tunes a decision threshold post hoc from out-of-fold probabilities. A more principled probability calibration step (e.g. temperature scaling per dialect) would likely improve the reliability of the predicted probabilities themselves, independent of the thresholding decision built on top of them.
 - Cross-dialect generalization here concerns two varieties of the same language; extending the same calibration methodology to genuinely cross-lingual settings would require handling representation differences that don't arise between en-AU and en-UK.
@@ -79,6 +79,4 @@ The classical baseline runs on CPU with no external dependencies beyond the pack
 
 Task, data, and baseline courtesy of the ALTA 2026 Shared Task organizers and the [BESSTIE corpus / baseline repository](https://github.com/dipankarsrirag/alta2026-sharedtask-baseline).
 
-## License
 
-This repository is shared for educational and portfolio purposes. Check the shared task's terms before reusing the data or submitting derivative results to the competition.
