@@ -6,10 +6,9 @@ Multi-task classification of sentiment and sarcasm in Australian and British Eng
 
 Best submitted result (5-fold ensemble of `roberta-base` and a social-media-pretrained RoBERTa variant), verified on the official scorer:
 
-| | sent-AU | sent-UK | sarc-AU | sarc-UK | **Final score** |
-|---|---|---|---|---|---|
-| Organizers' baseline (DistilBERT, single-task) | 0.9106 | 0.9532 | 0.7135 | 0.6374 | 0.7740 |
-| **This project** | **0.9161** | **0.9377** | **0.7768** | **0.6493** | **0.7827** |
+| sent-AU | sent-UK | sarc-AU | sarc-UK | **Final score** |
+|---|---|---|---|---|
+| **0.9161** | **0.9377** | **0.7768** | **0.6493** | **0.7827** |
 
 ```
 F1 score for sentiment (en-AU): 0.9161
